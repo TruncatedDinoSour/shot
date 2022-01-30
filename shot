@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+main() {
+    sleep -- "${S:-3s}"
+
+    scrot '/tmp/%F_%T_$wx$h.png' -e '/usr/bin/mpv $f; /bin/rm -f $f'
+    notify-send "$(basename "$0") exited with the code $?"
+}
+
+main "$@"
